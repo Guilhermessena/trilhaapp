@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:trilhaapp/pages/home.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -9,8 +10,8 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   var showPassword = true;
-  var emailController = TextEditingController();
-  var senhaController = TextEditingController();
+  var emailController = TextEditingController(text: "");
+  var senhaController = TextEditingController(text: "");
 
   @override
   Widget build(BuildContext context) {
@@ -142,7 +143,20 @@ class _LoginPageState extends State<LoginPage> {
                     child: SizedBox(
                       width: double.infinity,
                       child: TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          if (emailController.text.trim() ==
+                                  "email@gmail.com" &&
+                              senhaController.text.trim() == "123") {
+                            Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const HomePage()));
+                          } else {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                    content: Text("Login informado invalido")));
+                          }
+                        },
                         style: ButtonStyle(
                           backgroundColor:
                               const MaterialStatePropertyAll(Colors.purple),
