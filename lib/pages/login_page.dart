@@ -9,6 +9,8 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   var showPassword = true;
+  var emailController = TextEditingController();
+  var senhaController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -66,9 +68,10 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   Container(
                     margin: const EdgeInsets.symmetric(horizontal: 30),
-                    child: const TextField(
-                      style: TextStyle(color: Colors.white),
-                      decoration: InputDecoration(
+                    child: TextField(
+                      controller: emailController,
+                      style: const TextStyle(color: Colors.white),
+                      decoration: const InputDecoration(
                         contentPadding: EdgeInsets.only(top: 15),
                         enabledBorder: UnderlineInputBorder(
                           borderSide: BorderSide(
@@ -95,6 +98,7 @@ class _LoginPageState extends State<LoginPage> {
                   Container(
                     margin: const EdgeInsets.symmetric(horizontal: 30),
                     child: TextField(
+                      controller: senhaController,
                       obscureText: showPassword,
                       style: const TextStyle(color: Colors.white),
                       decoration: InputDecoration(
