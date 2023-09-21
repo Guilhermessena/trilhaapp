@@ -120,12 +120,26 @@ class _LoginPageState extends State<LoginPage> {
               Container(
                 margin: const EdgeInsets.symmetric(horizontal: 30),
                 alignment: Alignment.center,
-                height: 30,
-                width: double.infinity,
-                color: Colors.green,
-                child: const Text(
-                  "Login",
-                  style: TextStyle(fontSize: 18),
+                child: SizedBox(
+                  width: double.infinity,
+                  child: TextButton(
+                    onPressed: () {},
+                    style: ButtonStyle(
+                      backgroundColor:
+                          const MaterialStatePropertyAll(Colors.purple),
+                      shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      )),
+                    ),
+                    child: const Text(
+                      "Login",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.w500,
+                        fontSize: 16,
+                      ),
+                    ),
+                  ),
                 ),
               ),
               Expanded(child: Container()),
@@ -137,7 +151,7 @@ class _LoginPageState extends State<LoginPage> {
                 child: const Text(
                   "Esqueci minha senha",
                   style: TextStyle(
-                    fontSize: 18,
+                    fontSize: 17,
                     color: Colors.yellow,
                     fontWeight: FontWeight.w400,
                   ),
@@ -151,7 +165,7 @@ class _LoginPageState extends State<LoginPage> {
                 child: const Text(
                   "Criar conta",
                   style: TextStyle(
-                    fontSize: 18,
+                    fontSize: 16,
                     color: Colors.green,
                     fontWeight: FontWeight.w400,
                   ),
