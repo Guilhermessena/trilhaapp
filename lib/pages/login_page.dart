@@ -12,22 +12,50 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.lightBlue[50],
+        backgroundColor: Colors.black,
         body: SizedBox(
           width: double.infinity,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               const SizedBox(
-                height: 70,
+                height: 50,
               ),
-              Icon(
-                Icons.person,
-                size: 150,
-                color: Theme.of(context).primaryColor,
+              Row(
+                children: [
+                  Expanded(child: Container()),
+                  Expanded(
+                    flex: 8,
+                    child: Image.network(
+                        "https://hermes.digitalinnovation.one/assets/diome/logo.png"),
+                  ),
+                  Expanded(child: Container()),
+                ],
               ),
               const SizedBox(
-                height: 50,
+                height: 30,
+              ),
+              const Text(
+                "Já tem cadastro?",
+                style: TextStyle(
+                  fontSize: 26,
+                  fontWeight: FontWeight.w700,
+                  color: Colors.white,
+                ),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              const Text(
+                "Faça seu login e make the change_",
+                style: TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w700,
+                  color: Colors.white,
+                ),
+              ),
+              const SizedBox(
+                height: 40,
               ),
               Container(
                 margin: const EdgeInsets.symmetric(horizontal: 30),
@@ -37,14 +65,20 @@ class _LoginPageState extends State<LoginPage> {
                       flex: 3,
                       child: Text(
                         "Informe seu Email:",
-                        style: TextStyle(fontSize: 18),
+                        style: TextStyle(
+                          fontSize: 16,
+                          color: Colors.white,
+                        ),
                       ),
                     ),
                     Expanded(
                       flex: 2,
                       child: Text(
                         "Email",
-                        style: TextStyle(fontSize: 18),
+                        style: TextStyle(
+                          fontSize: 16,
+                          color: Colors.white,
+                        ),
                       ),
                     ),
                   ],
@@ -61,17 +95,37 @@ class _LoginPageState extends State<LoginPage> {
                       flex: 3,
                       child: Text(
                         "Informe sua Senha:",
-                        style: TextStyle(fontSize: 18),
+                        style: TextStyle(
+                          fontSize: 16,
+                          color: Colors.white,
+                        ),
                       ),
                     ),
                     Expanded(
                       flex: 2,
                       child: Text(
                         "Senha",
-                        style: TextStyle(fontSize: 18),
+                        style: TextStyle(
+                          fontSize: 16,
+                          color: Colors.white,
+                        ),
                       ),
                     ),
                   ],
+                ),
+              ),
+              const SizedBox(
+                height: 40,
+              ),
+              Container(
+                margin: const EdgeInsets.symmetric(horizontal: 30),
+                alignment: Alignment.center,
+                height: 30,
+                width: double.infinity,
+                color: Colors.green,
+                child: const Text(
+                  "Login",
+                  style: TextStyle(fontSize: 18),
                 ),
               ),
               Expanded(child: Container()),
@@ -80,14 +134,14 @@ class _LoginPageState extends State<LoginPage> {
                 alignment: Alignment.center,
                 height: 30,
                 width: double.infinity,
-                color: Theme.of(context).primaryColor,
                 child: const Text(
-                  "Login",
-                  style: TextStyle(fontSize: 18),
+                  "Esqueci minha senha",
+                  style: TextStyle(
+                    fontSize: 18,
+                    color: Colors.yellow,
+                    fontWeight: FontWeight.w400,
+                  ),
                 ),
-              ),
-              const SizedBox(
-                height: 30,
               ),
               Container(
                 margin: const EdgeInsets.symmetric(horizontal: 30),
@@ -95,12 +149,16 @@ class _LoginPageState extends State<LoginPage> {
                 height: 30,
                 width: double.infinity,
                 child: const Text(
-                  "Cadastro",
-                  style: TextStyle(fontSize: 18),
+                  "Criar conta",
+                  style: TextStyle(
+                    fontSize: 18,
+                    color: Colors.green,
+                    fontWeight: FontWeight.w400,
+                  ),
                 ),
               ),
               const SizedBox(
-                height: 20,
+                height: 80,
               )
             ],
           ),
