@@ -8,6 +8,8 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  var showPassword = true;
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -92,30 +94,38 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   Container(
                     margin: const EdgeInsets.symmetric(horizontal: 30),
-                    child: const TextField(
-                      style: TextStyle(color: Colors.white),
+                    child: TextField(
+                      obscureText: showPassword,
+                      style: const TextStyle(color: Colors.white),
                       decoration: InputDecoration(
-                        enabledBorder: UnderlineInputBorder(
+                        enabledBorder: const UnderlineInputBorder(
                           borderSide: BorderSide(
                             color: Colors.purple,
                           ),
                         ),
-                        focusedBorder: UnderlineInputBorder(
+                        focusedBorder: const UnderlineInputBorder(
                           borderSide: BorderSide(
                             color: Colors.purple,
                           ),
                         ),
-                        contentPadding: EdgeInsets.only(top: 15),
-                        prefixIcon: Icon(
+                        contentPadding: const EdgeInsets.only(top: 15),
+                        prefixIcon: const Icon(
                           Icons.lock,
                           color: Colors.purple,
                         ),
-                        suffixIcon: Icon(
-                          Icons.visibility,
-                          color: Colors.white,
+                        suffixIcon: GestureDetector(
+                          onTap: () => setState(() {
+                            showPassword = !showPassword;
+                          }),
+                          child: Icon(
+                            showPassword
+                                ? Icons.visibility_off_outlined
+                                : Icons.visibility_outlined,
+                            color: Colors.white,
+                          ),
                         ),
                         hintText: "Senha",
-                        hintStyle: TextStyle(color: Colors.white),
+                        hintStyle: const TextStyle(color: Colors.white),
                       ),
                     ),
                   ),
