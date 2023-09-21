@@ -13,166 +13,176 @@ class _LoginPageState extends State<LoginPage> {
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.black,
-        body: SizedBox(
-          width: double.infinity,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              const SizedBox(
-                height: 50,
-              ),
-              Row(
+        body: SingleChildScrollView(
+          child: ConstrainedBox(
+            constraints: BoxConstraints(
+              maxHeight: MediaQuery.of(context).size.height,
+            ),
+            child: SizedBox(
+              width: double.infinity,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Expanded(child: Container()),
-                  Expanded(
-                    flex: 8,
-                    child: Image.network(
-                        "https://hermes.digitalinnovation.one/assets/diome/logo.png"),
+                  const SizedBox(
+                    height: 50,
                   ),
-                  Expanded(child: Container()),
-                ],
-              ),
-              const SizedBox(
-                height: 30,
-              ),
-              const Text(
-                "Já tem cadastro?",
-                style: TextStyle(
-                  fontSize: 26,
-                  fontWeight: FontWeight.w700,
-                  color: Colors.white,
-                ),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              const Text(
-                "Faça seu login e make the change_",
-                style: TextStyle(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w700,
-                  color: Colors.white,
-                ),
-              ),
-              const SizedBox(
-                height: 40,
-              ),
-              Container(
-                margin: const EdgeInsets.symmetric(horizontal: 30),
-                child: const TextField(
-                  decoration: InputDecoration(
-                    contentPadding: EdgeInsets.only(top: 15),
-                    enabledBorder: UnderlineInputBorder(
-                      borderSide: BorderSide(
-                        color: Colors.purple,
+                  Row(
+                    children: [
+                      Expanded(child: Container()),
+                      Expanded(
+                        flex: 8,
+                        child: Image.network(
+                            "https://hermes.digitalinnovation.one/assets/diome/logo.png"),
                       ),
-                    ),
-                    focusedBorder: UnderlineInputBorder(
-                      borderSide: BorderSide(
-                        color: Colors.purple,
-                      ),
-                    ),
-                    prefixIcon: Icon(
-                      Icons.mail,
-                      color: Colors.purple,
-                    ),
-                    hintText: "Email",
-                    hintStyle: TextStyle(color: Colors.white),
+                      Expanded(child: Container()),
+                    ],
                   ),
-                ),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              Container(
-                margin: const EdgeInsets.symmetric(horizontal: 30),
-                child: const TextField(
-                  decoration: InputDecoration(
-                    enabledBorder: UnderlineInputBorder(
-                      borderSide: BorderSide(
-                        color: Colors.purple,
-                      ),
-                    ),
-                    focusedBorder: UnderlineInputBorder(
-                      borderSide: BorderSide(
-                        color: Colors.purple,
-                      ),
-                    ),
-                    contentPadding: EdgeInsets.only(top: 15),
-                    prefixIcon: Icon(
-                      Icons.lock,
-                      color: Colors.purple,
-                    ),
-                    suffixIcon: Icon(
-                      Icons.visibility,
+                  const SizedBox(
+                    height: 30,
+                  ),
+                  const Text(
+                    "Já tem cadastro?",
+                    style: TextStyle(
+                      fontSize: 26,
+                      fontWeight: FontWeight.w700,
                       color: Colors.white,
                     ),
-                    hintText: "Senha",
-                    hintStyle: TextStyle(color: Colors.white),
                   ),
-                ),
-              ),
-              const SizedBox(
-                height: 40,
-              ),
-              Container(
-                margin: const EdgeInsets.symmetric(horizontal: 30),
-                alignment: Alignment.center,
-                child: SizedBox(
-                  width: double.infinity,
-                  child: TextButton(
-                    onPressed: () {},
-                    style: ButtonStyle(
-                      backgroundColor:
-                          const MaterialStatePropertyAll(Colors.purple),
-                      shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      )),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  const Text(
+                    "Faça seu login e make the change_",
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w700,
+                      color: Colors.white,
                     ),
-                    child: const Text(
-                      "Login",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.w500,
-                        fontSize: 16,
+                  ),
+                  const SizedBox(
+                    height: 40,
+                  ),
+                  Container(
+                    margin: const EdgeInsets.symmetric(horizontal: 30),
+                    child: const TextField(
+                      style: TextStyle(color: Colors.white),
+                      decoration: InputDecoration(
+                        contentPadding: EdgeInsets.only(top: 15),
+                        enabledBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Colors.purple,
+                          ),
+                        ),
+                        focusedBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Colors.purple,
+                          ),
+                        ),
+                        prefixIcon: Icon(
+                          Icons.mail,
+                          color: Colors.purple,
+                        ),
+                        hintText: "Email",
+                        hintStyle: TextStyle(color: Colors.white),
                       ),
                     ),
                   ),
-                ),
-              ),
-              Expanded(child: Container()),
-              Container(
-                margin: const EdgeInsets.symmetric(horizontal: 30),
-                alignment: Alignment.center,
-                height: 30,
-                width: double.infinity,
-                child: const Text(
-                  "Esqueci minha senha",
-                  style: TextStyle(
-                    fontSize: 17,
-                    color: Colors.yellow,
-                    fontWeight: FontWeight.w400,
+                  const SizedBox(
+                    height: 10,
                   ),
-                ),
-              ),
-              Container(
-                margin: const EdgeInsets.symmetric(horizontal: 30),
-                alignment: Alignment.center,
-                height: 30,
-                width: double.infinity,
-                child: const Text(
-                  "Criar conta",
-                  style: TextStyle(
-                    fontSize: 16,
-                    color: Colors.green,
-                    fontWeight: FontWeight.w400,
+                  Container(
+                    margin: const EdgeInsets.symmetric(horizontal: 30),
+                    child: const TextField(
+                      style: TextStyle(color: Colors.white),
+                      decoration: InputDecoration(
+                        enabledBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Colors.purple,
+                          ),
+                        ),
+                        focusedBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Colors.purple,
+                          ),
+                        ),
+                        contentPadding: EdgeInsets.only(top: 15),
+                        prefixIcon: Icon(
+                          Icons.lock,
+                          color: Colors.purple,
+                        ),
+                        suffixIcon: Icon(
+                          Icons.visibility,
+                          color: Colors.white,
+                        ),
+                        hintText: "Senha",
+                        hintStyle: TextStyle(color: Colors.white),
+                      ),
+                    ),
                   ),
-                ),
+                  const SizedBox(
+                    height: 40,
+                  ),
+                  Container(
+                    margin: const EdgeInsets.symmetric(horizontal: 30),
+                    alignment: Alignment.center,
+                    child: SizedBox(
+                      width: double.infinity,
+                      child: TextButton(
+                        onPressed: () {},
+                        style: ButtonStyle(
+                          backgroundColor:
+                              const MaterialStatePropertyAll(Colors.purple),
+                          shape:
+                              MaterialStateProperty.all(RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          )),
+                        ),
+                        child: const Text(
+                          "Login",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.w500,
+                            fontSize: 16,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Expanded(child: Container()),
+                  Container(
+                    margin: const EdgeInsets.symmetric(horizontal: 30),
+                    alignment: Alignment.center,
+                    height: 30,
+                    width: double.infinity,
+                    child: const Text(
+                      "Esqueci minha senha",
+                      style: TextStyle(
+                        fontSize: 17,
+                        color: Colors.yellow,
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
+                  ),
+                  Container(
+                    margin: const EdgeInsets.symmetric(horizontal: 30),
+                    alignment: Alignment.center,
+                    height: 30,
+                    width: double.infinity,
+                    child: const Text(
+                      "Criar conta",
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: Colors.green,
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 80,
+                  )
+                ],
               ),
-              const SizedBox(
-                height: 80,
-              )
-            ],
+            ),
           ),
         ),
       ),
