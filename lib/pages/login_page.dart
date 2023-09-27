@@ -10,8 +10,8 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   var showPassword = true;
-  var emailController = TextEditingController(text: "");
-  var senhaController = TextEditingController(text: "");
+  var emailController = TextEditingController(text: "email@gmail.com");
+  var senhaController = TextEditingController(text: "123");
 
   @override
   Widget build(BuildContext context) {
