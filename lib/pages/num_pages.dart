@@ -1,19 +1,5 @@
 import 'package:flutter/material.dart';
 
-class NumPage1 extends StatefulWidget {
-  const NumPage1({super.key});
-
-  @override
-  State<NumPage1> createState() => _NumPage1State();
-}
-
-class _NumPage1State extends State<NumPage1> {
-  @override
-  Widget build(BuildContext context) {
-    return Container(color: Colors.blueGrey,);
-  }
-}
-
 class NumPage2 extends StatefulWidget {
   const NumPage2({super.key});
 

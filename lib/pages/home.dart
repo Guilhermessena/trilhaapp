@@ -3,6 +3,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:trilhaapp/pages/menu_drawer.dart';
 import 'package:trilhaapp/pages/num_pages.dart';
 
+import 'card_page.dart';
+
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -23,12 +25,7 @@ class _HomePageState extends State<HomePage> {
             style: GoogleFonts.roboto(),
           ),
         ),
-        drawer: const Drawer(
-          child: Padding(
-            padding: EdgeInsets.all(20.0),
-            child: MenuDrawer(),
-          ),
-        ),
+        drawer: const MenuDrawer(),
         body: Column(
           children: [
             Expanded(
@@ -38,7 +35,7 @@ class _HomePageState extends State<HomePage> {
                         posPage = value;
                       }),
                   children: const [
-                    NumPage1(),
+                    CardPage(),
                     NumPage2(),
                     NumPage3(),
                   ]),
