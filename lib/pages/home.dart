@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:trilhaapp/pages/image_assets.dart';
+import 'package:trilhaapp/pages/list_view_h.dart';
 import 'package:trilhaapp/pages/menu_drawer.dart';
-import 'package:trilhaapp/pages/num_pages.dart';
+import 'package:trilhaapp/pages/list_view_v.dart';
+import 'package:trilhaapp/pages/tarefa_page.dart';
 
 import 'card_page.dart';
 
@@ -36,11 +39,14 @@ class _HomePageState extends State<HomePage> {
                       }),
                   children: const [
                     CardPage(),
-                    NumPage2(),
-                    NumPage3(),
+                    ImageAssets(),
+                    ListViewV(),
+                    ListViewH(),
+                    TarefaPage(),
                   ]),
             ),
             BottomNavigationBar(
+              type: BottomNavigationBarType.fixed,
               onTap: (value) => pageController.jumpToPage(value),
               currentIndex: posPage,
               items: const [
@@ -48,6 +54,9 @@ class _HomePageState extends State<HomePage> {
                 BottomNavigationBarItem(label: "Dados", icon: Icon(Icons.add)),
                 BottomNavigationBarItem(
                     label: "User", icon: Icon(Icons.person)),
+                BottomNavigationBarItem(label: "List", icon: Icon(Icons.list)),
+                BottomNavigationBarItem(label: "Tarefas", icon: Icon(Icons.line_style_outlined)),
+
               ],
             )
           ],
