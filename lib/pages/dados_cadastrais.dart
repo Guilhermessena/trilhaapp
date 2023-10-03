@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:trilhaapp/repository/linguagens_repository.dart';
 import 'package:trilhaapp/repository/niveis_repository.dart';
+import 'package:trilhaapp/services/app_storage_service.dart';
 import 'package:trilhaapp/shared/widgets/text_label.dart';
 
 class DadosCadastrais extends StatefulWidget {
@@ -18,14 +19,16 @@ class _DadosCadastraisState extends State<DadosCadastrais> {
   DateTime? dtNasc;
   var niveisExp = [];
   var linguagens = [];
-  var linguagensSelecionada = [];
+  List<String> linguagensSelecionada = [];
   var nivelSelecionado = "";
   var pretensaoSalarial = 0.0;
   var tempoExp = 0;
   var isValidating = false;
+  AppStorageService prefs = AppStorageService();
 
   @override
   void initState() {
+    carregarDados();
     niveisExp = niveisRepository.listNiveis();
     linguagens = linguagensRepository.listLinguagens();
     super.initState();
@@ -40,6 +43,19 @@ class _DadosCadastraisState extends State<DadosCadastrais> {
       ));
     }
     return items;
+  }
+
+  void carregarDados() async {
+    nomeController.text = await prefs.getDadosCadastraisNome();
+    dtNascController.text = await prefs.getDadosCadastraisDtNasc();
+    if (dtNascController.text.isNotEmpty) {
+      dtNasc = DateTime.parse(dtNascController.text);
+    }
+    nivelSelecionado = await prefs.getDadosCadastraisNivelExp();
+    linguagensSelecionada = await prefs.getDadosCadastraisLinguagem();
+    tempoExp = await prefs.getDadosCadastraisTempoExp();
+    pretensaoSalarial = await prefs.getDadosCadastraisPretensaoSalarial();
+    setState(() {});
   }
 
   @override
@@ -149,7 +165,7 @@ class _DadosCadastraisState extends State<DadosCadastrais> {
                     },
                   ),
                   TextButton(
-                    onPressed: () {
+                    onPressed: () async {
                       if (nomeController.text.length <= 3) {
                         ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                             content: Text(
@@ -188,6 +204,16 @@ class _DadosCadastraisState extends State<DadosCadastrais> {
                                     Text("Selecione um salario maior que 0")));
                         return;
                       }
+
+                      await prefs.setDadosCadastraisNome(nomeController.text);
+                      await prefs.setDadosCadastraisDtNasc(dtNasc!);
+                      await prefs.setDadosCadastraisNivelExp(nivelSelecionado);
+                      await prefs
+                          .setDadosCadastraisLinguagem(linguagensSelecionada);
+                      await prefs.setDadosCadastraisTempoExp(tempoExp);
+                      await prefs.setDadosCadastraisPretensaoSalarial(
+                          pretensaoSalarial);
+
                       setState(() {
                         isValidating = !isValidating;
                       });

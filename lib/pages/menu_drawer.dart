@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:trilhaapp/pages/configuracoes_page.dart';
 import 'package:trilhaapp/pages/login_page.dart';
+import 'package:trilhaapp/pages/numeros_aleatorios_page.dart';
 
 import 'dados_cadastrais.dart';
 
@@ -139,7 +141,38 @@ class _MenuDrawerState extends State<MenuDrawer> {
                     Text("Configurações"),
                   ],
                 )),
-            onTap: () {},
+            onTap: () {
+              Navigator.pop(context);
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const ConfiguracoesPage(),
+                  ));
+            },
+          ),
+          const Divider(),
+          InkWell(
+            child: Container(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
+                width: double.infinity,
+                child: const Row(
+                  children: [
+                    Icon(Icons.numbers_outlined),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Text("Gerador de números"),
+                  ],
+                )),
+            onTap: () {
+              Navigator.pop(context);
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const NumerosAleatoriosPage(),
+                  ));
+            },
           ),
           const Divider(),
           InkWell(
