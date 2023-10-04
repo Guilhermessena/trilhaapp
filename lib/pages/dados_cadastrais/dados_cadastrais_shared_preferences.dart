@@ -4,14 +4,14 @@ import 'package:trilhaapp/repository/niveis_repository.dart';
 import 'package:trilhaapp/services/app_storage_service.dart';
 import 'package:trilhaapp/shared/widgets/text_label.dart';
 
-class DadosCadastrais extends StatefulWidget {
-  const DadosCadastrais({super.key});
+class DadosCadastraisSharedPreferences extends StatefulWidget {
+  const DadosCadastraisSharedPreferences({super.key});
 
   @override
-  State<DadosCadastrais> createState() => _DadosCadastraisState();
+  State<DadosCadastraisSharedPreferences> createState() => _DadosCadastraisSharedPreferencesState();
 }
 
-class _DadosCadastraisState extends State<DadosCadastrais> {
+class _DadosCadastraisSharedPreferencesState extends State<DadosCadastraisSharedPreferences> {
   var nomeController = TextEditingController(text: '');
   var dtNascController = TextEditingController(text: '');
   var niveisRepository = NiveisRepository();
@@ -24,7 +24,7 @@ class _DadosCadastraisState extends State<DadosCadastrais> {
   var pretensaoSalarial = 0.0;
   var tempoExp = 0;
   var isValidating = false;
-  AppStorageService prefs = AppStorageService();
+  AppStorageService storage = AppStorageService();
 
   @override
   void initState() {
@@ -46,15 +46,15 @@ class _DadosCadastraisState extends State<DadosCadastrais> {
   }
 
   void carregarDados() async {
-    nomeController.text = await prefs.getDadosCadastraisNome();
-    dtNascController.text = await prefs.getDadosCadastraisDtNasc();
+    nomeController.text = await storage.getDadosCadastraisNome();
+    dtNascController.text = await storage.getDadosCadastraisDtNasc();
     if (dtNascController.text.isNotEmpty) {
       dtNasc = DateTime.parse(dtNascController.text);
     }
-    nivelSelecionado = await prefs.getDadosCadastraisNivelExp();
-    linguagensSelecionada = await prefs.getDadosCadastraisLinguagem();
-    tempoExp = await prefs.getDadosCadastraisTempoExp();
-    pretensaoSalarial = await prefs.getDadosCadastraisPretensaoSalarial();
+    nivelSelecionado = await storage.getDadosCadastraisNivelExp();
+    linguagensSelecionada = await storage.getDadosCadastraisLinguagem();
+    tempoExp = await storage.getDadosCadastraisTempoExp();
+    pretensaoSalarial = await storage.getDadosCadastraisPretensaoSalarial();
     setState(() {});
   }
 
@@ -205,13 +205,13 @@ class _DadosCadastraisState extends State<DadosCadastrais> {
                         return;
                       }
 
-                      await prefs.setDadosCadastraisNome(nomeController.text);
-                      await prefs.setDadosCadastraisDtNasc(dtNasc!);
-                      await prefs.setDadosCadastraisNivelExp(nivelSelecionado);
-                      await prefs
+                      await storage.setDadosCadastraisNome(nomeController.text);
+                      await storage.setDadosCadastraisDtNasc(dtNasc!);
+                      await storage.setDadosCadastraisNivelExp(nivelSelecionado);
+                      await storage
                           .setDadosCadastraisLinguagem(linguagensSelecionada);
-                      await prefs.setDadosCadastraisTempoExp(tempoExp);
-                      await prefs.setDadosCadastraisPretensaoSalarial(
+                      await storage.setDadosCadastraisTempoExp(tempoExp);
+                      await storage.setDadosCadastraisPretensaoSalarial(
                           pretensaoSalarial);
 
                       setState(() {

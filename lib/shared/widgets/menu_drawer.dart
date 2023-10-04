@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:trilhaapp/pages/configuracoes_page.dart';
 import 'package:trilhaapp/pages/login_page.dart';
-import 'package:trilhaapp/pages/numeros_aleatorios_page.dart';
-
-import 'dados_cadastrais.dart';
+import '../../pages/configuracoes/configuracoes__hive_page.dart';
+import '../../pages/dados_cadastrais/dados_cadastrais_hive.dart';
+import '../../pages/dados_cadastrais/dados_cadastrais_shared_preferences.dart';
+import '../../pages/numeros_aleatorios/numeros_aleatorios_hive_page.dart';
 
 class MenuDrawer extends StatefulWidget {
   const MenuDrawer({super.key});
@@ -72,7 +72,7 @@ class _MenuDrawerState extends State<MenuDrawer> {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const DadosCadastrais(),
+                    builder: (context) => const DadosCadastraisHive(),
                   ));
             },
           ),
@@ -146,7 +146,7 @@ class _MenuDrawerState extends State<MenuDrawer> {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const ConfiguracoesPage(),
+                    builder: (context) => const ConfiguracoesHivePage(),
                   ));
             },
           ),
@@ -170,7 +170,7 @@ class _MenuDrawerState extends State<MenuDrawer> {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const NumerosAleatoriosPage(),
+                    builder: (context) => const NumerosAleatoriosHivePage(),
                   ));
             },
           ),

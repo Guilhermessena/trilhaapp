@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:trilhaapp/pages/image_assets.dart';
 import 'package:trilhaapp/pages/list_view_h.dart';
-import 'package:trilhaapp/pages/menu_drawer.dart';
+import 'package:trilhaapp/shared/widgets/menu_drawer.dart';
 import 'package:trilhaapp/pages/list_view_v.dart';
-import 'package:trilhaapp/pages/tarefa_page.dart';
+import 'package:trilhaapp/pages/tarefas_page/tarefa_hive_page.dart';
 
 import 'card_page.dart';
 
@@ -42,7 +42,7 @@ class _HomePageState extends State<HomePage> {
                     ImageAssets(),
                     ListViewV(),
                     ListViewH(),
-                    TarefaPage(),
+                    TarefaHivePage(),
                   ]),
             ),
             BottomNavigationBar(

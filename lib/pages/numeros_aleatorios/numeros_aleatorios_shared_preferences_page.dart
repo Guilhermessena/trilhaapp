@@ -3,18 +3,18 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:trilhaapp/services/app_storage_service.dart';
 
-class NumerosAleatoriosPage extends StatefulWidget {
-  const NumerosAleatoriosPage({super.key});
+class NumerosAleatoriosSharedPreferencesPage extends StatefulWidget {
+  const NumerosAleatoriosSharedPreferencesPage({super.key});
 
   @override
-  State<NumerosAleatoriosPage> createState() => _NumerosAleatoriosPageState();
+  State<NumerosAleatoriosSharedPreferencesPage> createState() => _NumerosAleatoriosSharedPreferencesPageState();
 }
 
-class _NumerosAleatoriosPageState extends State<NumerosAleatoriosPage> {
+class _NumerosAleatoriosSharedPreferencesPageState extends State<NumerosAleatoriosSharedPreferencesPage> {
   int numeroGerado = 0;
   int quantidadeCliques = 0;
 
-  AppStorageService prefs = AppStorageService();
+  AppStorageService storage = AppStorageService();
 
   @override
   void initState() {
@@ -23,9 +23,9 @@ class _NumerosAleatoriosPageState extends State<NumerosAleatoriosPage> {
   }
 
   void carregarDados() async {
-    numeroGerado = await prefs.getNumerosAleatoriosNumeroAleatorio();
+    numeroGerado = await storage.getNumerosAleatoriosNumeroAleatorio();
     quantidadeCliques =
-        await prefs.getNumerosAleatoriosAleatoriosQuantidadeCliques();
+        await storage.getNumerosAleatoriosAleatoriosQuantidadeCliques();
     setState(() {});
   }
 
@@ -54,15 +54,15 @@ class _NumerosAleatoriosPageState extends State<NumerosAleatoriosPage> {
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () async {
-            // final prefs = await SharedPreferences.getInstance();
-            // await prefs.remove(CHAVE_NUMERO_ALEATORIO);
+            // final storage = await SharedPreferences.getInstance();
+            // await storage.remove(CHAVE_NUMERO_ALEATORIO);
             var random = Random();
             setState(() {
               numeroGerado = random.nextInt(100);
               quantidadeCliques = (quantidadeCliques) + 1;
             });
-            await prefs.setNumerosAleatoriosNumeroAleatorio(numeroGerado);
-            await prefs
+            await storage.setNumerosAleatoriosNumeroAleatorio(numeroGerado);
+            await storage
                 .setNumerosAleatoriosQuantidadeCliques(quantidadeCliques);
           },
           child: const Icon(Icons.add),

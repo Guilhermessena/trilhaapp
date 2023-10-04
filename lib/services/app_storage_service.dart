@@ -130,52 +130,52 @@ class AppStorageService {
   }
 
   Future<void> _setString(String key, String value) async {
-    var prefs = await SharedPreferences.getInstance();
-    await prefs.setString(key, value);
+    var storage = await SharedPreferences.getInstance();
+    await storage.setString(key, value);
   }
 
   Future<String> _getString(String key) async {
-    var prefs = await SharedPreferences.getInstance();
-    return prefs.getString(key) ?? "";
+    var storage = await SharedPreferences.getInstance();
+    return storage.getString(key) ?? "";
   }
 
   Future<void> _setStringList(String key, List<String> values) async {
-    var prefs = await SharedPreferences.getInstance();
-    await prefs.setStringList(key, values);
+    var storage = await SharedPreferences.getInstance();
+    await storage.setStringList(key, values);
   }
 
   Future<List<String>> _getStringList(String key) async {
-    var prefs = await SharedPreferences.getInstance();
-    return prefs.getStringList(key) ?? [];
+    var storage = await SharedPreferences.getInstance();
+    return storage.getStringList(key) ?? [];
   }
 
   Future<void> _setInt(String key, int value) async {
-    var prefs = await SharedPreferences.getInstance();
-    await prefs.setInt(key, value);
+    var storage = await SharedPreferences.getInstance();
+    await storage.setInt(key, value);
   }
 
   Future<int> _getInt(String key) async {
-    var prefs = await SharedPreferences.getInstance();
-    return prefs.getInt(key) ?? 0;
+    var storage = await SharedPreferences.getInstance();
+    return storage.getInt(key) ?? 0;
   }
 
   Future<void> _setDouble(String key, double value) async {
-    var prefs = await SharedPreferences.getInstance();
-    await prefs.setDouble(key, value);
+    var storage = await SharedPreferences.getInstance();
+    await storage.setDouble(key, value);
   }
 
   Future<double> _getDouble(String key) async {
-    var prefs = await SharedPreferences.getInstance();
-    return prefs.getDouble(key) ?? 0.0;
+    var storage = await SharedPreferences.getInstance();
+    return storage.getDouble(key) ?? 0.0;
   }
 
   Future<void> _setBool(String key, bool value) async {
-    var prefs = await SharedPreferences.getInstance();
-    await prefs.setBool(key, value);
+    var storage = await SharedPreferences.getInstance();
+    await storage.setBool(key, value);
   }
 
   Future<bool> _getBool(String key) async {
-    var prefs = await SharedPreferences.getInstance();
-    return prefs.getBool(key) ?? false;
+    var storage = await SharedPreferences.getInstance();
+    return storage.getBool(key) ?? false;
   }
 }

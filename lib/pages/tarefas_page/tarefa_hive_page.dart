@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:trilhaapp/model/tarefa.dart';
-import 'package:trilhaapp/repository/tarefa_repository.dart';
+import 'package:trilhaapp/model/tarefa_hive.dart';
+import 'package:trilhaapp/repository/tarefa_hive_repository.dart';
 
-class TarefaPage extends StatefulWidget {
-  const TarefaPage({super.key});
+class TarefaHivePage extends StatefulWidget {
+  const TarefaHivePage({super.key});
 
   @override
-  State<TarefaPage> createState() => _TarefaPageState();
+  State<TarefaHivePage> createState() => _TarefaHivePageState();
 }
 
-class _TarefaPageState extends State<TarefaPage> {
-  var tarefaRepository = TarefaRepository();
+class _TarefaHivePageState extends State<TarefaHivePage> {
+  late TarefaHiveRepository tarefaHiveRepository;
   var descController = TextEditingController();
-  var _tarefas = <Tarefa>[];
+  var _tarefas = <TarefaHive>[];
   var apenasNaoconcluido = false;
 
   @override
@@ -22,15 +22,14 @@ class _TarefaPageState extends State<TarefaPage> {
   }
 
   void obterTarefas() async {
-    _tarefas = apenasNaoconcluido
-        ? await tarefaRepository.listarNaoConcluidas()
-        : await tarefaRepository.listar();
+    tarefaHiveRepository = await TarefaHiveRepository.load();
+    _tarefas = tarefaHiveRepository.obterDados(apenasNaoconcluido);
     setState(() {});
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return Scaffold(    
       body: Container(
         margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
         child: Column(
@@ -60,17 +59,18 @@ class _TarefaPageState extends State<TarefaPage> {
                 itemBuilder: (context, index) {
                   var tarefa = _tarefas[index];
                   return Dismissible(
-                    key: Key(tarefa.id),
+                    key: Key(tarefa.descricao),
                     onDismissed: (direction) async {
-                      await tarefaRepository.remove(tarefa.id);
+                      tarefaHiveRepository.remove(tarefa);
                       obterTarefas();
                     },
                     child: ListTile(
-                      title: Text(tarefa.desc),
+                      title: Text(tarefa.descricao),
                       trailing: Switch(
                         value: tarefa.concluido,
                         onChanged: (value) async {
-                          await tarefaRepository.alterar(tarefa.id, value);
+                          tarefa.concluido = value;
+                          tarefaHiveRepository.alterar(tarefa);
                           obterTarefas();
                         },
                       ),
@@ -103,12 +103,12 @@ class _TarefaPageState extends State<TarefaPage> {
                   ),
                   TextButton(
                     onPressed: () async {
-                      await tarefaRepository
-                          .adicionar(Tarefa(descController.text, false));
+                      await tarefaHiveRepository
+                          .salvar(TarefaHive.criar(descController.text, false));
                       if (context.mounted) {
                         Navigator.pop(context);
                       }
-                      setState(() {});
+                      obterTarefas();
                     },
                     child: const Text("Salvar"),
                   ),
