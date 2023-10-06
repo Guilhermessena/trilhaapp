@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:trilhaapp/pages/image_assets.dart';
 import 'package:trilhaapp/pages/list_view_h.dart';
+import 'package:trilhaapp/pages/tarefas_page/tarefa_sqlite_page.dart';
 import 'package:trilhaapp/shared/widgets/menu_drawer.dart';
 import 'package:trilhaapp/pages/list_view_v.dart';
 import 'package:trilhaapp/pages/tarefas_page/tarefa_hive_page.dart';
@@ -42,7 +43,7 @@ class _HomePageState extends State<HomePage> {
                     ImageAssets(),
                     ListViewV(),
                     ListViewH(),
-                    TarefaHivePage(),
+                    TarefaSqlitePage(),
                   ]),
             ),
             BottomNavigationBar(
@@ -55,8 +56,8 @@ class _HomePageState extends State<HomePage> {
                 BottomNavigationBarItem(
                     label: "User", icon: Icon(Icons.person)),
                 BottomNavigationBarItem(label: "List", icon: Icon(Icons.list)),
-                BottomNavigationBarItem(label: "Tarefas", icon: Icon(Icons.line_style_outlined)),
-
+                BottomNavigationBarItem(
+                    label: "Tarefas", icon: Icon(Icons.line_style_outlined)),
               ],
             )
           ],

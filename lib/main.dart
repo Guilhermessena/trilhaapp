@@ -13,6 +13,5 @@ void main() async {
   Hive.init(documentsDirectory.path);
   Hive.registerAdapter(DadosCadastraisAdapter());
   Hive.registerAdapter(TarefaHiveAdapter());
-
   runApp(const MyApp());
 }
