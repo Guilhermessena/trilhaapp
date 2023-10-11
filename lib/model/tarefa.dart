@@ -14,13 +14,13 @@ class Tarefa {
 
   String get desc => _desc;
 
-  void set desc(String desc) {
+  set desc(String desc) {
     _desc = desc;
   }
 
   bool get concluido => _concluido;
 
-  void set concluido(bool concluido) {
+  set concluido(bool concluido) {
     _concluido = concluido;
   }
 }

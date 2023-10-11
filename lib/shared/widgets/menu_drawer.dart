@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:trilhaapp/pages/login_page.dart';
+import 'package:trilhaapp/pages/posts_page.dart';
 import '../../pages/configuracoes/configuracoes__hive_page.dart';
 import '../../pages/dados_cadastrais/dados_cadastrais_hive.dart';
-import '../../pages/dados_cadastrais/dados_cadastrais_shared_preferences.dart';
 import '../../pages/numeros_aleatorios/numeros_aleatorios_hive_page.dart';
 
 class MenuDrawer extends StatefulWidget {
@@ -171,6 +171,30 @@ class _MenuDrawerState extends State<MenuDrawer> {
                   context,
                   MaterialPageRoute(
                     builder: (context) => const NumerosAleatoriosHivePage(),
+                  ));
+            },
+          ),
+          const Divider(),
+          InkWell(
+            child: Container(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
+                width: double.infinity,
+                child: const Row(
+                  children: [
+                    Icon(Icons.post_add_outlined),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Text("Posts"),
+                  ],
+                )),
+            onTap: () {
+              Navigator.pop(context);
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const PostsPage(),
                   ));
             },
           ),

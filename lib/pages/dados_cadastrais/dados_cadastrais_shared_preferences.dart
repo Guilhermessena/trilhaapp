@@ -219,7 +219,7 @@ class _DadosCadastraisSharedPreferencesState extends State<DadosCadastraisShared
                       });
                       Future.delayed(
                         const Duration(seconds: 3),
-                        () async {
+                        () {
                           ScaffoldMessenger.of(context).showSnackBar(
                             const SnackBar(
                               content: Text("Salvo com sucesso!"),

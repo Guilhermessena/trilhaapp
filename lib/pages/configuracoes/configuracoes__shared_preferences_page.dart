@@ -5,10 +5,12 @@ class ConfiguracoesSharedPreferencesPage extends StatefulWidget {
   const ConfiguracoesSharedPreferencesPage({super.key});
 
   @override
-  State<ConfiguracoesSharedPreferencesPage> createState() => _ConfiguracoesSharedPreferencesPageState();
+  State<ConfiguracoesSharedPreferencesPage> createState() =>
+      _ConfiguracoesSharedPreferencesPageState();
 }
 
-class _ConfiguracoesSharedPreferencesPageState extends State<ConfiguracoesSharedPreferencesPage> {
+class _ConfiguracoesSharedPreferencesPageState
+    extends State<ConfiguracoesSharedPreferencesPage> {
   var alturaController = TextEditingController();
   var nomeUsuarioController = TextEditingController();
   String? nomeUsuario;
@@ -83,23 +85,26 @@ class _ConfiguracoesSharedPreferencesPageState extends State<ConfiguracoesShared
                   await storage.setConfiguracoesAltura(
                       double.parse(alturaController.text));
                 } catch (e) {
-                  showDialog(
-                    context: context,
-                    builder: (context) {
-                      return AlertDialog(
-                        title: const Text("Meu app"),
-                        content: const Text("Favor informar uma altura valida"),
-                        actions: [
-                          TextButton(
-                            onPressed: () {
-                              Navigator.pop(context);
-                            },
-                            child: const Text("Ok"),
-                          ),
-                        ],
-                      );
-                    },
-                  );
+                  if (context.mounted) {
+                    showDialog(
+                      context: context,
+                      builder: (context) {
+                        return AlertDialog(
+                          title: const Text("Meu app"),
+                          content:
+                              const Text("Favor informar uma altura valida"),
+                          actions: [
+                            TextButton(
+                              onPressed: () {
+                                Navigator.pop(context);
+                              },
+                              child: const Text("Ok"),
+                            ),
+                          ],
+                        );
+                      },
+                    );
+                  }
                   return;
                 }
                 await storage
@@ -107,7 +112,7 @@ class _ConfiguracoesSharedPreferencesPageState extends State<ConfiguracoesShared
                 await storage.setConfiguracoesReceberPushNotification(
                     receberPushNotification);
                 await storage.setConfiguracoesTemaEscuro(temaEscuro);
-                Navigator.pop(context);
+                if (context.mounted) Navigator.pop(context);
               },
               child: const Text("Salvar"),
             )

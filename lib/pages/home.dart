@@ -3,9 +3,9 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:trilhaapp/pages/image_assets.dart';
 import 'package:trilhaapp/pages/list_view_h.dart';
 import 'package:trilhaapp/pages/tarefas_page/tarefa_sqlite_page.dart';
+import 'package:trilhaapp/pages/consulta_cep.dart';
 import 'package:trilhaapp/shared/widgets/menu_drawer.dart';
 import 'package:trilhaapp/pages/list_view_v.dart';
-import 'package:trilhaapp/pages/tarefas_page/tarefa_hive_page.dart';
 
 import 'card_page.dart';
 
@@ -39,6 +39,7 @@ class _HomePageState extends State<HomePage> {
                         posPage = value;
                       }),
                   children: const [
+                    ConsultaCepPage(),
                     CardPage(),
                     ImageAssets(),
                     ListViewV(),
@@ -51,6 +52,7 @@ class _HomePageState extends State<HomePage> {
               onTap: (value) => pageController.jumpToPage(value),
               currentIndex: posPage,
               items: const [
+                BottomNavigationBarItem(label: "Http", icon: Icon(Icons.network_cell)),
                 BottomNavigationBarItem(label: "Home", icon: Icon(Icons.home)),
                 BottomNavigationBarItem(label: "Dados", icon: Icon(Icons.add)),
                 BottomNavigationBarItem(
