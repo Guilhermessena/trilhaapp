@@ -1,4 +1,3 @@
-import 'package:dio/dio.dart';
 import 'package:trilhaapp/model/comments.dart';
 import 'package:trilhaapp/repository/comments/comments_repository.dart';
 import 'package:trilhaapp/repository/jsonplaceholder_custom_dio.dart';

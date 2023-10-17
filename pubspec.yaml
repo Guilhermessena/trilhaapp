@@ -41,6 +41,9 @@ dependencies:
   sqflite: ^2.3.0
   http: ^1.1.0
   dio: ^5.3.3
+  crypto: ^3.0.3
+  convert: ^3.1.1
+  flutter_dotenv: ^5.1.0
   
 
 dev_dependencies:
@@ -72,6 +75,7 @@ flutter:
     - lib/images/dash_ponney.png
     - lib/images/logo_dash.png
     - lib/images/logo.png
+    - .env
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

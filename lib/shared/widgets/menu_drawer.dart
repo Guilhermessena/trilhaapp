@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:trilhaapp/pages/characters/characters_page.dart';
 import 'package:trilhaapp/pages/login_page.dart';
 import 'package:trilhaapp/pages/posts_page.dart';
 import '../../pages/configuracoes/configuracoes__hive_page.dart';
@@ -195,6 +196,30 @@ class _MenuDrawerState extends State<MenuDrawer> {
                   context,
                   MaterialPageRoute(
                     builder: (context) => const PostsPage(),
+                  ));
+            },
+          ),
+          const Divider(),
+          InkWell(
+            child: Container(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
+                width: double.infinity,
+                child: const Row(
+                  children: [
+                    Icon(Icons.hdr_strong),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Text("Herois"),
+                  ],
+                )),
+            onTap: () async {
+              Navigator.pop(context);
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const CharactersPage(),
                   ));
             },
           ),
