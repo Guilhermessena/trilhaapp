@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:trilhaapp/pages/characters/characters_page.dart';
 import 'package:trilhaapp/pages/login_page.dart';
 import 'package:trilhaapp/pages/posts_page.dart';
+import 'package:trilhaapp/pages/tarefas_page/tarefa_http_page.dart';
+import 'package:trilhaapp/repository/back4app/tarefas_back4app_repository.dart';
 import '../../pages/configuracoes/configuracoes__hive_page.dart';
 import '../../pages/dados_cadastrais/dados_cadastrais_hive.dart';
 import '../../pages/numeros_aleatorios/numeros_aleatorios_hive_page.dart';
@@ -17,9 +19,7 @@ class _MenuDrawerState extends State<MenuDrawer> {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
+      child: ListView(
         children: [
           InkWell(
             onTap: () {
@@ -220,6 +220,30 @@ class _MenuDrawerState extends State<MenuDrawer> {
                   context,
                   MaterialPageRoute(
                     builder: (context) => const CharactersPage(),
+                  ));
+            },
+          ),
+          const Divider(),
+          InkWell(
+            child: Container(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
+                width: double.infinity,
+                child: const Row(
+                  children: [
+                    Icon(Icons.post_add_outlined),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Text("Tarefas HTTP"),
+                  ],
+                )),
+            onTap: () async {
+              Navigator.pop(context);
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const TarefaHttpPage(),
                   ));
             },
           ),
