@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:trilhaapp/pages/characters/characters_page.dart';
 import 'package:trilhaapp/pages/login_page.dart';
 import 'package:trilhaapp/pages/posts_page.dart';
 import 'package:trilhaapp/pages/tarefas_page/tarefa_http_page.dart';
-import 'package:trilhaapp/repository/back4app/tarefas_back4app_repository.dart';
 import '../../pages/configuracoes/configuracoes__hive_page.dart';
 import '../../pages/dados_cadastrais/dados_cadastrais_hive.dart';
 import '../../pages/numeros_aleatorios/numeros_aleatorios_hive_page.dart';
@@ -61,11 +61,15 @@ class _MenuDrawerState extends State<MenuDrawer> {
                 width: double.infinity,
                 child: const Row(
                   children: [
-                    Icon(Icons.person_2_outlined),
+                    FaIcon(
+                      FontAwesomeIcons.user,
+                      color: Colors.green,
+                      size: 20,
+                    ),
                     SizedBox(
                       width: 10,
                     ),
-                    Text("Dados cadastrais"),
+                    Text("Opção 1"),
                   ],
                 )),
             onTap: () {
